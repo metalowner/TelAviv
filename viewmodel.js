@@ -31,8 +31,10 @@ function viewModel() {
 	});
 
 	officeLocations.forEach(function(newProperty) {
-		this.properties.push(new property(newProperty));
+		self.properties.push(new property(newProperty));
 	});
 }
 
-ko.applyBindings(new viewModel());
+function startView() {
+	ko.applyBindings(new viewModel());
+}

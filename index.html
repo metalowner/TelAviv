@@ -10,22 +10,21 @@
 <body>
 
 <div id="container">
-
+<div id="topNav" data-bind="click: displayMenu"><span id="menuSpan">Press for Menu</span></div>
 	<div id="header">
 		<h1>Exclusive Immobilier</h1>
 		<h3>Filter our assets</h3>
-		<form id="searchInput"><input type="search" name="search" data-bind="value: searchTerm, valueUpdate: 'afterkeydown'" /></form>
+		<form id="searchInput"><input id="searchBox" type="search" name="search" data-bind="value: searchTerm, valueUpdate: 'afterkeydown'" /></form>
 		<label><input type="radio" name="type" checked value="all" data-bind="checked: typeDisplay" />All</label>
 		<label><input type="radio" name="type" checked value="apartment" data-bind="checked: typeDisplay" />Apartments</label>
 		<label><input type="radio" name="type" checked value="office" data-bind="checked: typeDisplay" />Offices</label>
-	</div>
-
-	<div id="menu">
-		<ul id="unorderedList" data-bind="foreach: filteredProperties">
-			<li class="property">
-				<span data-bind="text: title, click: markProperty"></span>
-			</li>
-		</ul>
+		<div id="menu">
+			<ul id="unorderedList" data-bind="foreach: filteredProperties">
+				<li class="property">
+					<span data-bind="text: title, click: markProperty"></span>
+				</li>
+			</ul>
+		</div>
 	</div>
 
 	<div id="googleMap"></div>

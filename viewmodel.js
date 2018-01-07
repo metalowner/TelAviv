@@ -7,12 +7,17 @@ function property(data) {
 	this.lat = data.location.lat;
 	this.lng = data.location.lng;
 	this.position = this.lat + ',' + this.lng;
+	this.pictures = data.pictures;
+
+	this.contact = '<h3>Contact</h3><br><span>Igale 054-3440022</span><br>' +
+	'<span>Pavel 054-5544471</span><br><span>Email: telaviv@exclusive26.com</span><br>';
 	
-	this.description = '<h4>' + data.title + '</h4><br>' +
-		'<div id="pano"></div>' +
+	this.descriptionInfo = '<h2>' + data.title + '</h2><hr><br>' +
+		'<img class="imgItem" src="images/' + data.pictures[0] + '" />' +
+		'<img class="imgItem" src="images/' + data.pictures[1] + '" /><br>' +
 		'<span>Price: ' + data.price + ' Ils / month</span><br>' +
-		'<span>Type: ' + data.type + '</span><br>' +
-		'<h5>Nearest Parkings (Ordered by distance)</h5><br>';
+		'<span>Type: ' + data.type + '</span><br>' + this.contact +
+		'<h3 class="nearestParkings">Nearest Parkings (Ordered by Foursquare API)</h3><br>';
 	
 	this.parkings = ko.observableArray([]);
 
@@ -28,11 +33,11 @@ function property(data) {
 			this.name = parkingArr.name;
 			self.parkings.push('<span>' + this.name + '</span><br>');
 		}
-		descriptionWindow.setContent(self.description += self.parkings.slice());
+		descriptionWindow.setContent(self.descriptionInfo += self.parkings.slice());
 	});
 
 	var descriptionWindow = new google.maps.InfoWindow({
-		content: self.description,
+		content: '<div class="descriptionWindow"' + self.descriptionInfo + '</div>',
 		position: data.location
 	});
 
@@ -81,7 +86,6 @@ function viewModel() {
 		var searchTerm = self.searchTerm().toLowerCase();
 
 		if (filterType === "all" && !searchTerm) {
-			$('input').value = "";
 			$('#searchInput').hide();
 			var temporaryProperties = self.properties.slice();
 
@@ -119,6 +123,15 @@ function viewModel() {
 	});
 	map.fitBounds(bounds);
 
+	this.displayMenu = function() {
+		if ($('#header').css('display') == 'none') {
+			$('#header').css('display', 'block');
+			map.fitBounds(bounds);
+		} else {
+			$('#header').css('display', 'none');
+			map.fitBounds(bounds);
+		}
+	}
 }
 
 function startView() {

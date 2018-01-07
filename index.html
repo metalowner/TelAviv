@@ -14,12 +14,17 @@
 	<div id="header">
 		<h1>Exclusive Immobilier</h1>
 		<h3>Filter our assets</h3>
-		<input type="search" id="searchInput">
+		<form id="searchInput"><input type="search" name="search" data-bind="value: searchTerm, valueUpdate: 'afterkeydown'" /></form>
+		<label><input type="radio" name="type" checked value="all" data-bind="checked: typeDisplay" />All</label>
+		<label><input type="radio" name="type" checked value="apartment" data-bind="checked: typeDisplay" />Apartments</label>
+		<label><input type="radio" name="type" checked value="office" data-bind="checked: typeDisplay" />Offices</label>
 	</div>
 
 	<div id="menu">
-		<ul id="unorderedList">
-			<li class="property"></li>
+		<ul id="unorderedList" data-bind="foreach: filteredProperties">
+			<li class="property">
+				<span data-bind="text: title, click: markProperty"></span>
+			</li>
 		</ul>
 	</div>
 
@@ -28,6 +33,7 @@
 </div>
 
 <script src="knockout-3.4.2.js"></script>
+<script src="jquery-3.2.1.min.js"></script>
 <script src="data.js"></script>
 <script src="viewmodel.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8bUKw93xauNBEH-MZFr--C_-imfqgbg4&callback=startView"

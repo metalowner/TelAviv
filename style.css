@@ -28,3 +28,14 @@ li:hover {
 #googleMap {
 	height: 100%;
 }
+
+#pano {
+	width: 200px;
+	height: 200px;
+}
+
+#searchInput {
+	width: 100%;
+	position: absolute;
+	top: 60px;
+}

@@ -1,5 +1,7 @@
 var map;
 
+var parkingIcon = 'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png';
+
 var officeLocations = [
 	{
          title: 'Amazing 3 bedrooms near the beach',
@@ -13,7 +15,7 @@ var officeLocations = [
      {
          title: 'Cozy 2 bedrooms apartment',
          location: {
-             lat: 32.07326,
+             lat: 32.06326,
              lng: 34.765958
          },
          price: 1400,
@@ -23,7 +25,7 @@ var officeLocations = [
          title: 'Beautiful office at the center',
          location: {
              lat: 32.07480,
-             lng: 34.778558
+             lng: 34.788558
          },
          price: 1000,
          type: 'office'
@@ -31,8 +33,8 @@ var officeLocations = [
      {
          title: 'Fully furnished bedroom for short terms',
          location: {
-             lat: 32.07480,
-             lng: 34.767998
+             lat: 32.08480,
+             lng: 34.769998
          },
          price: 2000,
          type: 'apartment'

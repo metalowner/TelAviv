@@ -4,17 +4,16 @@
 	<title>Exclusive Immobilier</title>
 	<meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="style.css">
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
+      <link rel="stylesheet" href="css/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
 
 <div id="container">
-<div id="topNav" data-bind="click: displayMenu"><span id="menuSpan">Press for Menu</span></div>
+<div id="topNav" data-bind="click: displayMenu"><h3 id="menuSpan">Exclusive Immobilier</h3></div>
 	<div id="header">
-		<h1>Exclusive Immobilier</h1>
 		<h3>Filter our assets</h3>
-		<form id="searchInput"><input id="searchBox" type="search" name="search" data-bind="value: searchTerm, valueUpdate: 'afterkeydown'" /></form>
+		<form id="searchInput"><input id="searchBox" type="search" name="search" placeholder="Filter by titles" data-bind="value: searchTerm, valueUpdate: 'afterkeydown'" /></form>
 		<label><input type="radio" name="type" checked value="all" data-bind="checked: typeDisplay" />All</label>
 		<label><input type="radio" name="type" checked value="apartment" data-bind="checked: typeDisplay" />Apartments</label>
 		<label><input type="radio" name="type" checked value="office" data-bind="checked: typeDisplay" />Offices</label>
@@ -31,11 +30,11 @@
 
 </div>
 
-<script src="knockout-3.4.2.js"></script>
-<script src="jquery-3.2.1.min.js"></script>
-<script src="data.js"></script>
-<script src="viewmodel.js"></script>
+<script src="js/knockout-3.4.2.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/viewmodel.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8bUKw93xauNBEH-MZFr--C_-imfqgbg4&callback=startView"
-    async defer></script>
+    async defer onerror="errorFunction()"></script>
 </body>
 </html>

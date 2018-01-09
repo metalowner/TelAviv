@@ -1,0 +1,98 @@
+html,
+body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+ul {
+	margin: 0px;
+	padding: 5px;
+	text-align: center;
+}
+
+li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #e6e6e6;
+	border-radius: 4px;
+	margin-bottom: 5px;
+}
+
+li:hover {
+	background-color: #f1f1f2;
+}
+
+span,
+h4 {
+	font-size: 17px;
+}
+
+h3 {
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+#container {
+	height: 100%;
+}
+
+#googleMap {
+	height: 100%;
+}
+
+#searchInput {
+	position: absolute;
+	top: 110px;
+	left: 3em;
+}
+
+#searchBox {
+	background-color: #f1f1f2;
+	border: 1px solid black;
+	border-radius: 4px;
+	padding: 2px;
+}
+
+#header {
+	text-align: center;
+	float: left;
+	display: none;
+	padding: 5px;
+}
+
+#topNav {
+	text-align: center;
+	font-size: 21px;
+	height: 35px;
+}
+
+.imgItem {
+	width: 90%;
+	height: auto;
+	display: block;
+	border: 1px solid black;
+	margin-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nearestRestaurants {
+	width: 100%;
+	padding: 5px;
+}
+
+@media screen and (min-width: 700px) {
+    .imgItem {
+		width: 80%;
+	}
+}
+
+@media screen and (min-width: 900px) {
+   .imgItem {
+		width: 70%;
+	}
+}

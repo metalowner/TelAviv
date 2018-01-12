@@ -1,6 +1,6 @@
-//property rendering function
-function property(data) {
-    //define property object attributes
+//Property rendering function
+function Property(data) {
+    //define Property object attributes
     var self = this;
     this.title = data.title;
     this.type = data.type;
@@ -40,13 +40,13 @@ function property(data) {
                 ' visited here.</b></span><br><span>Address: ' + this.address + '</span><br>');
         }
         //update info window with Foursquare content
-        descriptionWindow.setContent(self.descriptionInfo += self.restaurants.slice());
+        self.descriptionWindow.setContent(self.descriptionInfo += self.restaurants.slice());
         //handle Foursquare error
     }).fail(function() {
         alert('Failed to reach Foursquare API :( Check your internet connection and try again :)');
     });
     //create new info window
-    var descriptionWindow = new google.maps.InfoWindow({
+    this.descriptionWindow = new google.maps.InfoWindow({
         content: '<div class="descriptionWindow"' + self.descriptionInfo + '</div>',
         position: data.location
     });
@@ -58,7 +58,7 @@ function property(data) {
     });
     //define marker click event
     this.marker.addListener('click', function() {
-        descriptionWindow.open(map, this.marker);
+        self.descriptionWindow.open(map, this.marker);
         self.markProperty();
     });
     //define marking function
@@ -68,11 +68,14 @@ function property(data) {
         } else {
             this.marker.setAnimation(google.maps.Animation.BOUNCE);
         }
-        descriptionWindow.open(map, this.marker);
+        self.descriptionWindow.open(map, this.marker);
+        setTimeout(function() {
+            self.marker.setAnimation(null);
+        }, 1400);
     };
 }
 //define view model function
-function viewModel() {
+function ViewModel() {
     var self = this;
     //define properties observable array
     self.properties = ko.observableArray([]);
@@ -91,7 +94,7 @@ function viewModel() {
     var bounds = new google.maps.LatLngBounds();
     //render data and fill properties array with new rendered properties
     officeLocations.forEach(function(newProperty) {
-        self.properties.push(new property(newProperty));
+        self.properties.push(new Property(newProperty));
     });
     //define type filter and initial value
     self.typeDisplay = ko.observable("all");
@@ -153,16 +156,18 @@ function viewModel() {
     this.displayMenu = function() {
         if ($('#header').css('display') == 'none') {
             $('#header').css('display', 'block');
-            map.fitBounds(bounds);
         } else {
             $('#header').css('display', 'none');
-            map.fitBounds(bounds);
         }
+        self.filteredProperties().forEach(function(property) {
+            property.descriptionWindow.close();
+        });
+        map.fitBounds(bounds);
     };
 }
 //start google maps as a new view model
 function startView() {
-    ko.applyBindings(new viewModel());
+    ko.applyBindings(new ViewModel());
 }
 //handle Google maps error
 function errorFunction() {

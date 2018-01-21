@@ -3,6 +3,7 @@
 This is a properties listing web application displaying different properties for rent on the Google Maps API.
 
 In order to launch the application clone or download the repository then open index.html in your browser.
+Or, simply press here: https://metalowner.github.io/TelAviv/
 
 You can filter the properties by type and the Apartments\Offices by a search input that appears when either type is selected.
 
